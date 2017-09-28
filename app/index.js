@@ -13,8 +13,8 @@ app.get('/', (request, response) => {
 })
 
 app.post('/test', (request, response) => {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('post received');
+  response.writeHead(200, {'Content-Type': 'text/html'});
+  response.end('post received');
 })
 
 app.post('/', (request, response) => {
