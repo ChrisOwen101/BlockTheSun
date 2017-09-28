@@ -12,6 +12,11 @@ app.get('/', (request, response) => {
   response.send('Hello from Express!')
 })
 
+app.post('/test', (request, response) => {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('post received');
+})
+
 app.post('/', (request, response) => {
   console.log(request.body.url)
   var url = request.body.url;
