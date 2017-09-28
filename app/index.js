@@ -8,6 +8,10 @@ const port = 8080;
 
 app.use(bodyParser.json());
 
+app.get('/', (request, response) => {
+  response.send('Hello from Express!')
+})
+
 app.post('/', (request, response) => {
   console.log(request.body.url)
   var url = request.body.url;
