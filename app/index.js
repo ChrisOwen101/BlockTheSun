@@ -36,6 +36,7 @@ app.post('/', (request, response) => {
 })
 
 function returnImage(filename, response){
+  console.log("Returning Image");
   var img = fs.readFileSync('./' + filename);
   response.writeHead(200, {'Content-Type': 'image/jpg' });
   response.end(img, 'binary');

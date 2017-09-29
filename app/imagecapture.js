@@ -1,4 +1,6 @@
 function storeImage(url, fn){
+  console.log("Getting Image");
+
   var webshot = require('webshot');
   var filenames = require('./filenames.js');
 
