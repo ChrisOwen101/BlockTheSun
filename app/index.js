@@ -33,8 +33,6 @@ app.post('/', (request, response) => {
         }
       });
     }
-
-    imagecapture.storeImage(request.body.url);
   })
 
   function returnImage(filename, response){
