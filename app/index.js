@@ -25,28 +25,30 @@ app.post('/', (request, response) => {
   if (fs.existsSync('./' + filename)) {
     returnImage(filename,response);
   } else {
-      imagecapture.storeImage(request.body.url, function(error){
-        if(error === null){
-          returnImage(filename,response);
+    imagecapture.storeImage(request.body.url, function(error){
+      if(error === null){
+        returnImage(filename,response);
+        else {
+          console.log(error);
         }
       });
+    }
+
+    imagecapture.storeImage(request.body.url);
+  })
+
+  function returnImage(filename, response){
+    console.log("Returning Image");
+    var img = fs.readFileSync('./' + filename);
+    response.writeHead(200, {'Content-Type': 'image/jpg' });
+    response.end(img, 'binary');
   }
 
-  imagecapture.storeImage(request.body.url);
-})
+  app.listen(port, (err) => {
+    if (err) {
+      return console.log('something bad happened', err)
+    }
 
-function returnImage(filename, response){
-  console.log("Returning Image");
-  var img = fs.readFileSync('./' + filename);
-  response.writeHead(200, {'Content-Type': 'image/jpg' });
-  response.end(img, 'binary');
-}
+    console.log(`server is listening on ${port}`)
 
-app.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  console.log(`server is listening on ${port}`)
-
-})
+  })
