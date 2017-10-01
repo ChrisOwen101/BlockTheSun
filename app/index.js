@@ -18,7 +18,7 @@ app.post('/test', (request, response) => {
 })
 
 app.post('/', (request, response) => {
-    res.connection.setTimeout(0);
+    response.connection.setTimeout(0);
 
     console.log(request.body.url)
     var url = request.body.url;
